@@ -19,9 +19,14 @@
       padding: 20px;
       border-radius: 8px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      width: 300px;
+      width: 350px;
     }
-    input {
+    label {
+      font-weight: bold;
+      margin-top: 10px;
+      display: block;
+    }
+    select, button {
       width: 100%;
       padding: 10px;
       margin: 10px 0;
@@ -29,12 +34,8 @@
       border-radius: 5px;
     }
     button {
-      width: 100%;
-      padding: 10px;
       background-color: #4CAF50;
       color: white;
-      border: none;
-      border-radius: 5px;
       cursor: pointer;
     }
     button:hover {
@@ -51,34 +52,58 @@
 <body>
   <div class="container">
     <h2>Estimación de Story Points</h2>
-    <label for="complejidad">Complejidad (1-5)</label>
-    <input type="number" id="complejidad" min="1" max="5" placeholder="Ingrese la complejidad">
 
-    <label for="volumen">Volumen de Trabajo (1-5)</label>
-    <input type="number" id="volumen" min="1" max="5" placeholder="Ingrese el volumen de trabajo">
+    <!-- Complejidad -->
+    <label for="complejidad">Complejidad</label>
+    <select id="complejidad">
+      <option value="1">Baja (1)</option>
+      <option value="2">Media Baja (2)</option>
+      <option value="3">Media (3)</option>
+      <option value="4">Alta (4)</option>
+      <option value="5">Muy Alta (5)</option>
+    </select>
 
-    <label for="riesgo">Riesgo (1-5)</label>
-    <input type="number" id="riesgo" min="1" max="5" placeholder="Ingrese el riesgo">
+    <!-- Volumen de Trabajo -->
+    <label for="volumen">Volumen de Trabajo</label>
+    <select id="volumen">
+      <option value="1">Bajo (1)</option>
+      <option value="2">Medio Bajo (2)</option>
+      <option value="3">Medio (3)</option>
+      <option value="4">Alto (4)</option>
+      <option value="5">Muy Alto (5)</option>
+    </select>
 
+    <!-- Riesgo -->
+    <label for="riesgo">Riesgo</label>
+    <select id="riesgo">
+      <option value="1">Bajo (1)</option>
+      <option value="2">Medio Bajo (2)</option>
+      <option value="3">Medio (3)</option>
+      <option value="4">Alto (4)</option>
+      <option value="5">Muy Alto (5)</option>
+    </select>
+
+    <!-- Botón para calcular -->
     <button onclick="calcularStoryPoints()">Calcular Story Points</button>
 
+    <!-- Resultado -->
     <div class="result" id="resultado"></div>
   </div>
 
   <script>
     function calcularStoryPoints() {
+      // Obtener los valores seleccionados
       const complejidad = parseInt(document.getElementById("complejidad").value);
       const volumen = parseInt(document.getElementById("volumen").value);
       const riesgo = parseInt(document.getElementById("riesgo").value);
-      
-      if (isNaN(complejidad) || isNaN(volumen) || isNaN(riesgo)) {
-        alert("Por favor, ingrese valores válidos para todos los campos.");
-        return;
-      }
 
+      // Calcular los Story Points
       const total = complejidad + volumen + riesgo;
+
+      // Mostrar el resultado
       document.getElementById("resultado").innerText = `Story Points Estimados: ${total}`;
     }
   </script>
 </body>
 </html>
+
