@@ -1,100 +1,108 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matriz de Story Points</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f4f4f9;
-        }
-
-        h1 {
-            text-align: center;
-            color: #333;
-        }
-
-        table {
-            width: 90%;
-            margin: 20px auto;
-            border-collapse: collapse;
-            background-color: white;
-            border: 1px solid #ddd;
-        }
-
-        th, td {
-            padding: 15px;
-            text-align: center;
-            border: 1px solid #ddd;
-        }
-
-        th {
-            background-color: #4CAF50;
-            color: white;
-        }
-
-        td input {
-            width: 80%;
-            padding: 8px;
-            text-align: center;
-            border: 1px solid #ddd;
-            box-sizing: border-box;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estimación de Story Points</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 350px;
+    }
+    label {
+      font-weight: bold;
+      margin-top: 10px;
+      display: block;
+    }
+    select, button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .result {
+      margin-top: 15px;
+      font-size: 18px;
+      color: #333;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
+  <div class="container">
+    <h2>Estimación de Story Points</h2>
 
-    <h1>Matriz de Story Points</h1>
+    <!-- Complejidad -->
+    <label for="complejidad">Complejidad</label>
+    <select id="complejidad">
+      <option value="1">Baja (1)</option>
+      <option value="2">Media Baja (2)</option>
+      <option value="3">Media (3)</option>
+      <option value="4">Alta (4)</option>
+      <option value="5">Muy Alta (5)</option>
+    </select>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Historia de Usuario</th>
-                <th>1</th>
-                <th>2</th>
-                <th>3</th>
-                <th>5</th>
-                <th>8</th>
-                <th>13</th>
-                <th>21</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><input type="text" placeholder="Historia 1"></td>
-                <td><input type="number" min="0" max="21" placeholder="Puntaje"></td>
-                <td><input type="number" min="0" max="21" placeholder="Puntaje"></td>
-                <td><input type="number" min="0" max="21" placeholder="Puntaje"></td>
-                <td><input type="number" min="0" max="21" placeholder="Puntaje"></td>
-                <td><input type="number" min="0" max="21" placeholder="Puntaje"></td>
-                <td><input type="number" min="0" max="21" placeholder="Puntaje"></td>
-                <td><input type="number" min="0" max="21" placeholder="Puntaje"></td>
-            </tr>
-            <tr>
-                <td><input type="text" placeholder="Historia 2"></td>
-                <td><input type="number" min="0" max="21" placeholder="Puntaje"></td>
-                <td><input type="number" min="0" max="21" placeholder="Puntaje"></td>
-                <td><input type="number" min="0" max="21" placeholder="Puntaje"></td>
-                <td><input type="number" min="0" max="21" placeholder="Puntaje"></td>
-                <td><input type="number" min="0" max="21" placeholder="Puntaje"></td>
-                <td><input type="number" min="0" max="21" placeholder="Puntaje"></td>
-                <td><input type="number" min="0" max="21" placeholder="Puntaje"></td>
-            </tr>
-            <tr>
-                <td><input type="text" placeholder="Historia 3"></td>
-                <td><input type="number" min="0" max="21" placeholder="Puntaje"></td>
-                <td><input type="number" min="0" max="21" placeholder="Puntaje"></td>
-                <td><input type="number" min="0" max="21" placeholder="Puntaje"></td>
-                <td><input type="number" min="0" max="21" placeholder="Puntaje"></td>
-                <td><input type="number" min="0" max="21" placeholder="Puntaje"></td>
-                <td><input type="number" min="0" max="21" placeholder="Puntaje"></td>
-                <td><input type="number" min="0" max="21" placeholder="Puntaje"></td>
-            </tr>
-        </tbody>
-    </table>
+    <!-- Volumen de Trabajo -->
+    <label for="volumen">Volumen de Trabajo</label>
+    <select id="volumen">
+      <option value="1">Bajo (1)</option>
+      <option value="2">Medio Bajo (2)</option>
+      <option value="3">Medio (3)</option>
+      <option value="4">Alto (4)</option>
+      <option value="5">Muy Alto (5)</option>
+    </select>
 
+    <!-- Riesgo -->
+    <label for="riesgo">Riesgo</label>
+    <select id="riesgo">
+      <option value="1">Bajo (1)</option>
+      <option value="2">Medio Bajo (2)</option>
+      <option value="3">Medio (3)</option>
+      <option value="4">Alto (4)</option>
+      <option value="5">Muy Alto (5)</option>
+    </select>
+
+    <!-- Botón para calcular -->
+    <button onclick="calcularStoryPoints()">Calcular Story Points</button>
+
+    <!-- Resultado -->
+    <div class="result" id="resultado"></div>
+  </div>
+
+  <script>
+    function calcularStoryPoints() {
+      // Obtener los valores seleccionados
+      const complejidad = parseInt(document.getElementById("complejidad").value);
+      const volumen = parseInt(document.getElementById("volumen").value);
+      const riesgo = parseInt(document.getElementById("riesgo").value);
+
+      // Calcular los Story Points
+      const total = complejidad + volumen + riesgo;
+
+      // Mostrar el resultado
+      document.getElementById("resultado").innerText = `Story Points Estimados: ${total}`;
+    }
+  </script>
 </body>
 </html>
