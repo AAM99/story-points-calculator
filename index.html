@@ -129,8 +129,8 @@
         function calcularStoryPoints() {
             if (seleccionados.complejidad && seleccionados.volumen && seleccionados.riesgo) {
                 let total = (seleccionados.complejidad *0.4 + seleccionados.volumen*0.4 + seleccionados.riesgo*0.2);
-                //let storyPoints = [1, 2, 3, 5, 8, 13].reduce((a, b) => Math.abs(b - total) < Math.abs(a - total) ? b : a); 
-                let storyPoints = [1, 2, 3, 5, 8, 13].find(sp => sp >= total) || 13;
+                let storyPoints = [1, 2, 3, 5, 8, 13].reduce((a, b) => Math.abs(b - total) < Math.abs(a - total) ? b : a); 
+                //let storyPoints = [1, 2, 3, 5, 8, 13].find(sp => sp >= total) || 13;
                 document.getElementById("resultado").innerText = `Estimación de Story Points: ${storyPoints} SP`;
             } else {
                 document.getElementById("resultado").innerText = "Selecciona una opción en cada columna";
