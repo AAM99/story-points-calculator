@@ -1,109 +1,136 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Estimación de Story Points</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f9;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-    }
-    .container {
-      background-color: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      width: 350px;
-    }
-    label {
-      font-weight: bold;
-      margin-top: 10px;
-      display: block;
-    }
-    select, button {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-    }
-    button {
-      background-color: #4CAF50;
-      color: white;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #45a049;
-    }
-    .result {
-      margin-top: 15px;
-      font-size: 18px;
-      color: #333;
-      text-align: center;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matriz de Story Points</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f9;
+            padding: 20px;
+        }
+        table {
+            width: 60%;
+            margin: auto;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        th, td {
+            padding: 15px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        th {
+            background-color: #ddd;
+        }
+        .button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .button.selected {
+            background-color: #2E7D32;
+        }
+        .submit-button {
+            background-color: #008CBA;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .result {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <h2>Estimación de Story Points</h2>
 
-    <!-- Complejidad -->
-    <label for="complejidad">Complejidad</label>
-    <select id="complejidad">
-      <option value="1">Baja (1)</option>
-      <option value="2">Media Baja (2)</option>
-      <option value="3">Media (3)</option>
-      <option value="4">Alta (4)</option>
-      <option value="5">Muy Alta (5)</option>
-    </select>
+    <h2>Matriz de Story Points</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Story Points</th>
+                <th>Complejidad Técnica</th>
+                <th>Volumen de Trabajo</th>
+                <th>Incertidumbre / Riesgos</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1 SP</td>
+                <td><button class="button" onclick="selectButton(this, 'complejidad', 1)">Muy Baja</button></td>
+                <td><button class="button" onclick="selectButton(this, 'volumen', 1)">Muy Bajo</button></td>
+                <td><button class="button" onclick="selectButton(this, 'riesgo', 1)">Nulo</button></td>
+            </tr>
+            <tr>
+                <td>3 SP</td>
+                <td><button class="button" onclick="selectButton(this, 'complejidad', 3)">Baja</button></td>
+                <td><button class="button" onclick="selectButton(this, 'volumen', 3)">Bajo</button></td>
+                <td><button class="button" onclick="selectButton(this, 'riesgo', 3)">Bajo</button></td>
+            </tr>
+            <tr>
+                <td>5 SP</td>
+                <td><button class="button" onclick="selectButton(this, 'complejidad', 5)">Media</button></td>
+                <td><button class="button" onclick="selectButton(this, 'volumen', 5)">Medio</button></td>
+                <td><button class="button" onclick="selectButton(this, 'riesgo', 5)">Medio</button></td>
+            </tr>
+            <tr>
+                <td>8 SP</td>
+                <td><button class="button" onclick="selectButton(this, 'complejidad', 8)">Alta</button></td>
+                <td><button class="button" onclick="selectButton(this, 'volumen', 8)">Alto</button></td>
+                <td><button class="button" onclick="selectButton(this, 'riesgo', 8)">Alto</button></td>
+            </tr>
+            <tr>
+                <td>13 SP</td>
+                <td><button class="button" onclick="selectButton(this, 'complejidad', 13)">Muy Alta</button></td>
+                <td><button class="button" onclick="selectButton(this, 'volumen', 13)">Muy Alto</button></td>
+                <td><button class="button" onclick="selectButton(this, 'riesgo', 13)">Crítico</button></td>
+            </tr>
+        </tbody>
+    </table>
 
-    <!-- Volumen de Trabajo -->
-    <label for="volumen">Volumen de Trabajo</label>
-    <select id="volumen">
-      <option value="1">Bajo (1)</option>
-      <option value="2">Medio Bajo (2)</option>
-      <option value="3">Medio (3)</option>
-      <option value="4">Alto (4)</option>
-      <option value="5">Muy Alto (5)</option>
-    </select>
-
-    <!-- Riesgo -->
-    <label for="riesgo">Riesgo</label>
-    <select id="riesgo">
-      <option value="1">Bajo (1)</option>
-      <option value="2">Medio Bajo (2)</option>
-      <option value="3">Medio (3)</option>
-      <option value="4">Alto (4)</option>
-      <option value="5">Muy Alto (5)</option>
-    </select>
-
-    <!-- Botón para calcular -->
-    <button onclick="calcularStoryPoints()">Calcular Story Points</button>
-
-    <!-- Resultado -->
+    <button class="submit-button" onclick="calcularStoryPoints()">Calcular Story Points</button>
     <div class="result" id="resultado"></div>
-  </div>
 
-  <script>
-    function calcularStoryPoints() {
-      // Obtener los valores seleccionados
-      const complejidad = parseInt(document.getElementById("complejidad").value);
-      const volumen = parseInt(document.getElementById("volumen").value);
-      const riesgo = parseInt(document.getElementById("riesgo").value);
+    <script>
+        let seleccionados = { complejidad: 0, volumen: 0, riesgo: 0 };
 
-      // Calcular los Story Points
-      const total = complejidad + volumen + riesgo;
+        function selectButton(element, categoria, value) {
+            // Desactivar todos los botones de la categoría
+            document.querySelectorAll(`.button.selected`).forEach(btn => {
+                if (btn.getAttribute("data-category") === categoria) {
+                    btn.classList.remove("selected");
+                }
+            });
 
-      // Mostrar el resultado
-      document.getElementById("resultado").innerText = `Story Points Estimados: ${total}`;
-    }
-  </script>
+            // Marcar el nuevo botón seleccionado
+            element.classList.add("selected");
+            element.setAttribute("data-category", categoria);
+
+            // Guardar el valor seleccionado
+            seleccionados[categoria] = value;
+        }
+
+        function calcularStoryPoints() {
+            if (seleccionados.complejidad && seleccionados.volumen && seleccionados.riesgo) {
+                let total = (seleccionados.complejidad + seleccionados.volumen + seleccionados.riesgo) / 3;
+                let storyPoints = [1, 3, 5, 8, 13].reduce((a, b) => Math.abs(b - total) < Math.abs(a - total) ? b : a);
+
+                document.getElementById("resultado").innerText = `Estimación de Story Points: ${storyPoints} SP`;
+            } else {
+                document.getElementById("resultado").innerText = "Selecciona una opción en cada columna";
+            }
+        }
+    </script>
+
 </body>
-</html>
 </html>
