@@ -98,7 +98,7 @@
       const riesgo = parseInt(document.getElementById("riesgo").value);
 
       // Calcular los Story Points
-      const total = complejidad + volumen + riesgo;
+      const total = 0.4*complejidad + 0.4*volumen + 0.2*riesgo;
 
       // Mostrar el resultado
       document.getElementById("resultado").innerText = `Story Points Estimados: ${total}`;
