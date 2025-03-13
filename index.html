@@ -72,6 +72,12 @@
                 <td><button class="button" onclick="selectButton(this, 'riesgo', 1)">Nulo</button></td>
             </tr>
             <tr>
+                <td>2 SP</td>
+                <td><button class="button" onclick="selectButton(this, 'complejidad', 2)">Muy Baja</button></td>
+                <td><button class="button" onclick="selectButton(this, 'volumen', 2)">Muy Bajo</button></td>
+                <td><button class="button" onclick="selectButton(this, 'riesgo', 2)">Nulo</button></td>
+            </tr>
+            <tr>
                 <td>3 SP</td>
                 <td><button class="button" onclick="selectButton(this, 'complejidad', 3)">Baja</button></td>
                 <td><button class="button" onclick="selectButton(this, 'volumen', 3)">Bajo</button></td>
@@ -122,8 +128,8 @@
 
         function calcularStoryPoints() {
             if (seleccionados.complejidad && seleccionados.volumen && seleccionados.riesgo) {
-                let total = (seleccionados.complejidad + seleccionados.volumen + seleccionados.riesgo) / 3;
-                let storyPoints = [1, 3, 5, 8, 13].reduce((a, b) => Math.abs(b - total) < Math.abs(a - total) ? b : a);
+                let total = (seleccionados.complejidad + seleccionados.volumen + seleccionados.riesgo);
+                let storyPoints = [1, 2, 3, 5, 8, 13].reduce((a, b) => Math.abs(b - total) < Math.abs(a - total) ? b : a);
 
                 document.getElementById("resultado").innerText = `Estimación de Story Points: ${storyPoints} SP`;
             } else {
